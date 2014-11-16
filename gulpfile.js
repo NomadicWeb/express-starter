@@ -3,18 +3,21 @@ var gulp   = require('gulp'),
     axis   = require('axis'),
     nmon   = require('gulp-nodemon'),
     minCSS = require('gulp-minify-css'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    rename = require('gulp-rename');
 
 gulp.task('stylus', function () {
   gulp.src('./app/assets/stylesheets/style.styl')
   .pipe(stylus({use: [axis()]}))
   .pipe(minCSS())
+  .pipe(rename({suffix: '.min'}))
   .pipe(gulp.dest('./app/assets/stylesheets/dist'));
 });
 
 gulp.task('uglify', function () {
   gulp.src('./app/assets/javascripts/*.js')
   .pipe(uglify())
+  .pipe(rename({suffix: '.min'}))
   .pipe(gulp.dest('./app/assets/javascripts/dist'));
 });
 
