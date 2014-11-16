@@ -13,6 +13,7 @@
     "gulp": "3.8.10"
   },
   "devDependencies": {
+    "bower": "^1.3.12",
     "express-livereload": "0.0.24",
     "gulp-minify-css": "^0.3.11",
     "gulp-nodemon": "^1.0.4",
