@@ -12,10 +12,10 @@ var app        = express();
 var conf       = require('./app/config/conf.js');
 var bodyParser = require('body-parser');
 
+app.use(express.static(__dirname + '/app/assets/'));
+app.set('views', __dirname + '/app/views');
 app.set('port', conf.port);
 app.set('view engine', 'jade');
-app.set('views', __dirname + '/app/views');
-app.use(express.static(__dirname + '/app/assets/'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(function(err, req, res, next){res.status(err.status || 500);});
