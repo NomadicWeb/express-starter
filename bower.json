@@ -1,0 +1,22 @@
+{
+  "name": "express-starter",
+  "version": "0.0.0",
+  "authors": [
+    "Luke Murphy <lukewm@riseup.net>"
+  ],
+  "description": "Starter express/nodejs kit.",
+  "main": "server.js",
+  "keywords": [
+    "nodejs",
+    "express"
+  ],
+  "license": "MIT",
+  "homepage": "@todo",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
