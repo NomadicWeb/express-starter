@@ -3,7 +3,6 @@ html
   head
     title @TODO - #{title}
     link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     meta(name='viewport', content='width=device-width', initial-scale='1')
 
     != LRScript
@@ -13,7 +12,5 @@ html
         .main
           block content
 
-    // javascripts
-    script(src="/javascripts/jquery.js")
-    script(src="/javascripts/bootstrap.min.js")
-    script(src="/javascripts/app.js")
+    // javascripts @TODO - use requirejs
+    script(src="")
