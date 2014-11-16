@@ -3,8 +3,8 @@ var gulp   = require('gulp'),
     axis   = require('axis'),
     nmon   = require('gulp-nodemon'),
     minCSS = require('gulp-minify-css'),
-    uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
+    uglify = require('gulp-uglify'),
     concat = require('gulp-concat');
 
 gulp.task('stylus', function(){
@@ -22,6 +22,15 @@ gulp.task('concat-css', function(){
   ])
    .pipe(concat('concat.css', {newLine: ';'}))
    .pipe(gulp.dest('./app/assets/stylesheets/dist'));
+});
+
+gulp.task('concat-js', function(){
+  gulp.src([
+    './app/assets/bower/jquery/dist/jquery.min.js',
+    './app/assets/javascripts/dist/app.min.js'
+  ])
+   .pipe(concat('concat.js', {newLine: ';'}))
+   .pipe(gulp.dest('./app/assets/javascripts/dist'));
 });
 
 gulp.task('uglify', function(){
