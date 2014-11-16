@@ -5,19 +5,26 @@ var gulp   = require('gulp'),
     minCSS = require('gulp-minify-css'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
+    concat = require('gulp-concat');
 
-gulp.task('stylus', function () {
-  gulp.src([
-    './app/assets/stylesheets/style.styl',
-    './app/assets/bower/bootstrap/dist/css/bootstrap.min.css',
-  ])
+gulp.task('stylus', function(){
+  gulp.src('./app/assets/stylesheets/style.styl')
   .pipe(stylus({use: [axis()]}))
   .pipe(minCSS())
   .pipe(rename({suffix: '.min'}))
   .pipe(gulp.dest('./app/assets/stylesheets/dist'));
 });
 
-gulp.task('uglify', function () {
+gulp.task('concat-css', function(){
+  gulp.src([
+    './app/assets/stylesheets/dist/style.min.css',
+    './app/assets/bower/bootstrap/dist/css/bootstrap.min.css'
+  ])
+   .pipe(concat('concat.css', {newLine: ';'}))
+   .pipe(gulp.dest('./app/assets/stylesheets/dist'));
+});
+
+gulp.task('uglify', function(){
   gulp.src('./app/assets/javascripts/*.js')
   .pipe(uglify())
   .pipe(rename({suffix: '.min'}))
@@ -25,11 +32,11 @@ gulp.task('uglify', function () {
 });
 
 gulp.task('watch', function(){
-    gulp.watch("./app/assets/stylesheets/*.styl", ['stylus']);
-    gulp.watch("./app/assets/javascripts/*.js",   ['uglify']);
+    gulp.watch("./app/assets/stylesheets/*.styl", ['stylus', 'concat-css']);
+    gulp.watch("./app/assets/javascripts/*.js",   ['uglify', 'concat-js']);
 });
 
-gulp.task('dev', function() {
+gulp.task('dev', function(){
   nmon({script: 'server.js'});
 });
 
