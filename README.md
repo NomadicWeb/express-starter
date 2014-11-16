@@ -5,4 +5,5 @@
   - sort out the config + port code
     - 
   - minify CSS + JS
+    - CSS minified + concatted
   - install bower? requirejs?
