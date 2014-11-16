@@ -4,10 +4,13 @@ var gulp   = require('gulp'),
     nmon   = require('gulp-nodemon'),
     minCSS = require('gulp-minify-css'),
     uglify = require('gulp-uglify'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
 
 gulp.task('stylus', function () {
-  gulp.src('./app/assets/stylesheets/style.styl')
+  gulp.src([
+    './app/assets/stylesheets/style.styl',
+    './app/assets/bower/bootstrap/dist/css/bootstrap.min.css',
+  ])
   .pipe(stylus({use: [axis()]}))
   .pipe(minCSS())
   .pipe(rename({suffix: '.min'}))
